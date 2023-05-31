@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WebApplication.Areas.Admin.Data.UploadProduct>
+@{
+    ViewBag.Title = "Product";
+    var index = 0;
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Form</div>
+                <div class="card-body">
+                    @using (Html.BeginForm("UploadFile", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="input-group mb-3">
+                            <div class="col-md-8">
+                                <input type="file" name="UploadedFile" class="form-control" />
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary"><i class="ti ti-upload"></i> Upload</button>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="col-md-6">
+                                <a href="~/File/temp_product.xlsx" class="btn btn-outline-warning"><i class="ti ti-file"></i> File mẫu</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+        @if (Model != null)
+        {
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Database</div>
+                    <div class="card-body">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Seri</th>
+                                    <th>Mã code</th>
+
+                                    <th>Loại</th>
+                                    <th>Model</th>
+                                    <th>Thương hiệu</th>
+                                    <th>Hạn</th>
+                                    <th>Ngày xuất</th>
+                                    <th>Ngày chờ</th>
+                                    <th>Đại lý</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    index++;
+                                    <tr>
+                                        <td>@index</td>
+                                        <td>@item.Product.Name</td>
+                                        <td>@item.Product.Serial</td>
+                                        <td>@item.Product.Code</td>
+                                        <td>@item.Product.ProductCate</td>
+                                        <td>@item.Product.Model</td>
+                                        <td>@item.Product.Trademark</td>
+                                        <td>@item.Product.Limited</td>
+                                        <td>
+                                            @if (item.Product.Exportdate != null)
+                                            {<span>@item.Product.Exportdate.Value.ToString("dd/MM/yyyy")</span>}
+                                    </td>
+                                        <td>@item.Product.Wait_day</td>
+                                    <td>@item.Product.AgentC1</td>
+                                    <td>
+                                        @if (item.Error != null)
+                                        {
+                                            <p class="text-danger">@item.Error</p>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>}
+
+    </div>
+    
+</div>   

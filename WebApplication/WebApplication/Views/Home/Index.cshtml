@@ -1,0 +1,190 @@
+﻿@model IEnumerable<WebApplication.Models.Article>
+@{
+    ViewBag.Title = "trang chủ";
+}
+<div class="carousel slide" data-ride="carousel" id="demo">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        @foreach (var item in Model)
+        {
+            <li data-target="#demo" data-slide-to="@item.Cate" class="@(item.Title == "banner 1" ? "active" : "")"></li>
+        }
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        @foreach (var item in Model)
+        {
+            <div class="carousel-item @(item.Title == "banner 1" ? "active" : "")">
+                <img src="@item.Image" alt="@item.Title">
+            </div>
+        }
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+<style>
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #dd3333;
+    }
+
+    form p {
+        padding-top: 10px;
+    }
+
+    #sends {
+        background-color: #dd3333;
+    }
+
+    .h-box {
+        overflow: hidden;
+    }
+
+        .h-box .h-box-ct {
+            margin: auto;
+            margin-top: 30px;
+        }
+
+    .h-box-ct {
+        width: 63%;
+        text-align: center;
+        padding: 20px 30px;
+        border: 1px solid #dd3333;
+        border-radius: 15px;
+    }
+
+        .h-box-ct:hover {
+            background-color: #dd3333;
+            color: white;
+        }
+
+        .h-box-ct p {
+            margin-bottom: 0;
+        }
+
+        .h-box-ct:hover p {
+            color: white !important;
+        }
+
+        .h-box-ct:hover .at {
+            display: block !important;
+        }
+
+        .h-box-ct:hover .nat {
+            display: none !important;
+        }
+
+        .h-box-ct a {
+            text-decoration: none;
+        }
+
+        .h-box-ct img {
+            margin: 0 auto;
+            max-width: 50px;
+        }
+
+        .h-box-ct p {
+            font-weight: bold;
+            color: black;
+        }
+
+    .bot-ic {
+        width: 70%;
+        margin: auto;
+    }
+
+    .txt-des-ic {
+        text-align: center;
+        padding: 10px 30px;
+    }
+
+    @@media (max-width:768px) {
+        .bot-ic {
+            width: 100%;
+        }
+    }
+</style>
+<div class="main container" style="padding-top:10px">
+    <div class="clearfix">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/kich-hoat" title="kích hoạt bảo hành">
+                            <img src="~/Image/h-kich-hoat.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-kich-hoat-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>KÍCH HOẠT BẢO HÀNH</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Kích hoạt bảo hành cho các sản phẩm của APE bằng Mã cào.</p>*@
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/tra-cuu-kich-hoat" title="tra cứu bảo hành">
+                            <img src="~/Image/h-tra-cuu.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-tra-cuu-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>TRA CỨU BẢO HÀNH</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Tra cứu thông tin hạn bảo hành của một sản phẩm của APE bằng Mã cào hoặc số điện thoại khách hàng.</p>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="h-box">
+                    <div class="h-box-ct" style="padding:10px 30px;">
+                        <a href="/bao-hanh" title="yêu cầu bảo hành">
+                            <img src="~/Image/h-yeu-cau.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-yeu-cau-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>YÊU CẦU BẢO HÀNH, SỬA CHỮA</p>
+                        </a>
+                    </div>
+                </div>
+                @*<p class="txt-des-ic">Yêu cầu bảo hành hoặc sửa chữa cho sản phẩm của APE khi có phát sinh bảo hành hoặc sửa chữa.</p>*@
+            </div>
+        </div>
+        <div class="bot-ic row">
+            <div class="col-md-6">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/tram-bao-hanh" title="trạm bảo hành">
+                            <img src="~/Image/h-tram.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-tram-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>TRẠM BẢO HÀNH</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Địa chỉ các TTBH của APE trên toàn quốc.</p>*@
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-box">
+                    <div class="h-box-ct">
+                        <a href="/huong-dan" title="hướng dẫn">
+                            <img src="~/Image/h-huong-dan.png" alt="" class="img-responsive nat" />
+                            <img src="~/Image/h-huong-dan-at.png" alt="" class="img-responsive at" style="display:none" />
+                            <p>HƯỚNG DẪN</p>
+                        </a>
+                    </div>
+                    @*<p class="txt-des-ic">Thông tin về chính sách bảo hành của APE.</p>*@
+                </div>
+            </div>
+        </div>
+        <p class="text-center" style="padding-top:30px;">
+            <b>
+                Đối với Quý khách hàng, chúng tôi luôn mang đến những sản phẩm với chất lượng tốt nhất. <br />
+                Cùng với đó, sự quan tâm hàng đầu của chúng tôi là đặc biệt chú trọng đến dịch vụ chăm sóc, bảo hành trong suốt vòng đời sản phẩm.
+            </b>
+        </p>
+    </div>
+</div>
